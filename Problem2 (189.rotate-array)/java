@@ -1,1 +1,20 @@
-
+class Solution {
+    public void rotate(int[] nums, int k) {
+        for (int i = 0; i < k; ++i) {
+            //保留下一个位置应放入的数字，每次遍历最后一次插入的数字无效
+            int keep = -1;
+            for(int j = 0; j < nums.length; ++j){
+                //先把第最后一个数字放到最前
+                if (j == 0) {
+                    keep = nums[j];
+                    nums[j] = nums[nums.length - 1];
+                    continue;
+                }
+                //交换当前数字，为下一个应放入数字做准备
+                int swop = nums[j];
+                nums[j] = keep;
+                keep = swop;
+            }
+        }
+    }
+}
